@@ -54,7 +54,7 @@ options.forEach((item)=>{
         const codigo =  window.document.querySelectorAll('.codigo')[e.target.id]
         const embalagem = window.document.querySelectorAll('.embalagem')[e.target.id]
         console.log(codigo)
-        fetch('http://localhost:8081/itens').then((promise)=>{
+        fetch('https://proconsistema.herokuapp.com/itens').then((promise)=>{
             promise.json().then((data)=>{
                 data.forEach((newData)=>{
                     if(newData.item == e.target.value){
