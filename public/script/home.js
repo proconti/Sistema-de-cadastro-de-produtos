@@ -29,7 +29,7 @@ for (let index = 0; index < 7; index++) {
 
 
 function getDataFromRouter() {
-    fetch('http://localhost:8081/itens').then((promise) => {
+    fetch('https://proconsistema.herokuapp.com/itens').then((promise) => {
         const selects = window.document.querySelectorAll('.form_select')
         promise.json().then((data) => {
             selects.forEach((item)=>{
