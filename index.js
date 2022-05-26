@@ -10,6 +10,7 @@ import fs from 'fs'
 const app = express();
 createTable()
 
+const port = process.env.PORT || 3000
 
 
 
@@ -62,6 +63,6 @@ app.post('/update/:id',updateItens)
 
 app.get('/itens',data)
 
-app.listen(8081,()=>{
+app.listen(port,()=>{
     console.log('connection Ok');
 });
