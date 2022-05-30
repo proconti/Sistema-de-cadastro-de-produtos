@@ -58,7 +58,7 @@ options.forEach((item)=>{
             promise.json().then((data)=>{
                 data.forEach((newData)=>{
                     if(newData.item == e.target.value){
-                        codigo.innerHTML = `<p>${newData.item_id}</p>`
+                        codigo.innerHTML = `<p>ME-00${newData.item_id}</p>`
                         embalagem.innerHTML = `<p>${newData.embalagem}</p>`
 
                     }
