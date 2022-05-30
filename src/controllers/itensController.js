@@ -12,12 +12,12 @@ export async function newItem(req, res) {
 
 
         const itens = await db.all('SELECT * FROM Itens')
-        res.render('FormCadastro', { itens: itens })
+        res.render('FormCadastro', { itens: itens,menu:false })
         db.close();
     } catch (e) {
         console.log(e)
         res.send('Erro ao adicionar item')
-        res.render('FormCadastro')
+        res.render('FormCadastro',{ itens: itens,menu:false })
 
     }
 
@@ -39,7 +39,7 @@ export async function deleteItens(req, res) {
         const id = req.params.id
         await db.run(`DELETE FROM Itens WHERE item_id ="${id}"`)
         const itens = await db.all('SELECT * FROM Itens')
-        res.render('FormCadastro', { itens: itens })
+        res.render('FormCadastro', { itens: itens,menu:false })
         db.close();
     } catch {
         res.render('erro no banco de dados')
@@ -59,7 +59,7 @@ export async function updateItens(req,res){
         quantidade = '${item.quantidade}'
         WHERE item_id=${id}`)
         const itens = await db.all('SELECT * FROM Itens')
-        res.render('FormCadastro', { itens: itens })
+        res.render('FormCadastro', { itens: itens,menu:false })
         db.close();
     }catch(e){ 
         res.render('erro no banco de dados')

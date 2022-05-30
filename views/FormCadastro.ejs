@@ -41,9 +41,12 @@
         <nav class="navbar navbar-light ">
             <div class="container-fluid">
                 <a href="/"><button class="btn btn-danger">Voltar</button></a>
-                <form class="d-flex" action="/cadastro">
-                    <!-- <button class="btn btn-outline-primary no_print" type="submit">Admin</button> -->
-                </form>
+                <% if(menu) { %>
+                    <form class="d-flex" action="/usuarios/all" method="post">
+                        <button class="btn btn-outline-primary no_print" type="submit">Usuarios</button>
+                    </form>
+                <% } %>
+
             </div>
         </nav>
     </header>
@@ -63,11 +66,11 @@
             <!-- Password input -->
             <div class="form-outline mb-4">
                 <label class="form-label" for="form1Example2">Tipo de Embalagem</label>
-                <input type="text"  class="form-control" name='embalagem' />
+                <input type="text" class="form-control" name='embalagem' />
             </div>
             <div class="form-outline mb-4 col-3">
                 <label class="form-label" for="form1Example2">Quantidade</label>
-                <input type="number"  class="form-control" name='quantidade' />
+                <input type="number" class="form-control" name='quantidade' />
             </div>
 
             <!-- 2 column grid layout for inline styling -->
@@ -107,7 +110,9 @@
                             </td>
                             <td style="text-align: center;">ME-000<%= elemento.item_id %>
                             </td>
-                            <td style="text-align: center;"><%= elemento.quantidade %></td>
+                            <td style="text-align: center;">
+                                <%= elemento.quantidade %>
+                            </td>
                             <td style="text-align: center;">
                                 <a class="btn btn-danger" href='/delete/<%= elemento.item_id %>' class="">🗑 Deletar</a>
                                 <a class="btn btn-primary" href='#' data-bs-toggle="modal"
@@ -127,46 +132,50 @@
         </div>
         <!-- Modal -->
         <% itens.forEach(elemento=> { %>
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal  fade " id="mm<%= elemento.item_id %>" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Editar item</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="row g-3" action="/update/<%= elemento.item_id %>" method="post">
-                                <div class="col-12">
-                                    <label for="inputAddress" class="form-label">Item</label>
-                                    <input type="text" class="form-control" name="item" value='<%= elemento.item %>' id="inputAddress">
-                                </div>
-                                
-                                <div class="col-md-6">
-                                    <label for="inputEmail4" class="form-label">Embalagem</label>
-                                    <input type="text" class="form-control" name='embalagem' id="inputEmail4" value="<%= elemento.embalagem %>">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="inputPassword4" class="form-label">Quantidade</label>
-                                    <input type="text" name='quantidade' value="<%= elemento.quantidade %>" class="form-control" >
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn btn-primary">Atualizar</button>
-                                </div>
-                            </form>
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal  fade " id="mm<%= elemento.item_id %>" tabindex="-1"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Editar item</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="row g-3" action="/update/<%= elemento.item_id %>" method="post">
+                                    <div class="col-12">
+                                        <label for="inputAddress" class="form-label">Item</label>
+                                        <input type="text" class="form-control" name="item" value='<%= elemento.item %>'
+                                            id="inputAddress">
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="inputEmail4" class="form-label">Embalagem</label>
+                                        <input type="text" class="form-control" name='embalagem' id="inputEmail4"
+                                            value="<%= elemento.embalagem %>">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="inputPassword4" class="form-label">Quantidade</label>
+                                        <input type="text" name='quantidade' value="<%= elemento.quantidade %>"
+                                            class="form-control">
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary">Atualizar</button>
+                                    </div>
+                                </form>
 
 
 
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <% }); %>
+            <% }); %>
 
     </section>
     <!-- /.row -->

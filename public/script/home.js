@@ -26,7 +26,7 @@ for (let index = 0; index < 7; index++) {
     
 }
 
-
+// https://proconsistema.herokuapp.com/itens
 
 function getDataFromRouter() {
     fetch('https://proconsistema.herokuapp.com/itens').then((promise) => {
