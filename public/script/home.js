@@ -1,7 +1,7 @@
 const tabelaPrincipal = window.document.querySelector('tbody')
 
 
-for (let index = 0; index < 6; index++) {
+for (let index = 0; index < 5; index++) {
     tabelaPrincipal.innerHTML += `
 <tr id="principal_table">
 <td>
