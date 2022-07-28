@@ -24,7 +24,6 @@
 }
 .input_form{
     width: 100%;
-   
     border: none;
     background-color: transparent;
     outline: none;
@@ -61,5 +60,8 @@
     .no_print{
         visibility: hidden;
 
+    }
+    h1{
+        font-size: 30px;
     }
 }
