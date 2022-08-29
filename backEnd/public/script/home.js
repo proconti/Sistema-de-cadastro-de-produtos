@@ -29,7 +29,7 @@ for (let index = 0; index < 5; index++) {
 // https://proconsistema.herokuapp.com/itens
 
 function getDataFromRouter() {
-    fetch('https://proconsistema.herokuapp.com/itens').then((promise) => {
+    fetch('http://localhost:3000/itens').then((promise) => {
         const selects = window.document.querySelectorAll('.form_select')
         promise.json().then((data) => {
             selects.forEach((item)=>{
@@ -54,7 +54,7 @@ options.forEach((item)=>{
         const codigo =  window.document.querySelectorAll('.codigo')[e.target.id]
         const embalagem = window.document.querySelectorAll('.embalagem')[e.target.id]
         console.log(codigo)
-        fetch('https://proconsistema.herokuapp.com/itens').then((promise)=>{
+        fetch('http://localhost:3000/itens').then((promise)=>{
             promise.json().then((data)=>{
                 data.forEach((newData)=>{
                     if(newData.item == e.target.value){
